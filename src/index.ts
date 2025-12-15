@@ -5,6 +5,7 @@ import { handlerLogin } from "./handler_login";
 import { handlerRegister } from "./handler_register";
 import { handlerReset } from "./handler_reset";
 import { handlerUsers } from "./handler_users";
+import { handlerAgg } from "./handler_agg";
 
 /**
  * Entry point to the application
@@ -34,11 +35,12 @@ async function main(): Promise<void> {
   process.exit(0);
 }
 
-function registerCommands(registry:CommandsRegistry): void {
+function registerCommands(registry: CommandsRegistry): void {
   registerCommand(registry, "login", handlerLogin);
   registerCommand(registry, "register", handlerRegister);
   registerCommand(registry, "reset", handlerReset);
   registerCommand(registry, "users", handlerUsers);
+  registerCommand(registry, "agg", handlerAgg);
 }
 
 main();
