@@ -1,9 +1,13 @@
-import { setUser } from "./config.js";
+import { setUser } from "./config";
+import { getUser } from "./lib/db/queries/users";
 
 
-export function handlerLogin(cmdName: string, ...args: string[]): void {
+export async function handlerLogin(cmdName: string, ...args: string[]): Promise<void> {
     if (args.length === 0) {
-        throw new Error("login expects a user name");
+        throw new Error("Error: login expects a user name");
+    }
+    if ((await getUser(args[0])).length === 0) {
+        throw new Error("Error: user name not found");
     }
 
     setUser(args[0]);
