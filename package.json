@@ -1,0 +1,26 @@
+{
+  "name": "bootdev-blog-aggregator",
+  "version": "1.0.0",
+  "description": "A Blog Aggregator made for a Boot.dev project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReleeSquirrel/bootdev-blog-aggregator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ReleeSquirrel/bootdev-blog-aggregator/issues"
+  },
+  "homepage": "https://github.com/ReleeSquirrel/bootdev-blog-aggregator#readme",
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
