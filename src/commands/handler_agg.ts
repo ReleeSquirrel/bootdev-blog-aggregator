@@ -1,4 +1,4 @@
-import { fetchFeed } from "./fetch_feed";
+import { fetchFeed } from "../lib/rss/fetch_feed";
 import { inspect } from "util";
 
 

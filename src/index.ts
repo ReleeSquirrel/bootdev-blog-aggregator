@@ -1,12 +1,12 @@
-import { CommandsRegistry, registerCommand, runCommand } from "./command_registry";
+import { CommandsRegistry, registerCommand, runCommand } from "./commands/command_registry";
 import { readConfig } from "./config";
 import { exit } from "node:process";
-import { handlerLogin } from "./handler_login";
-import { handlerRegister } from "./handler_register";
-import { handlerReset } from "./handler_reset";
-import { handlerUsers } from "./handler_users";
-import { handlerAgg } from "./handler_agg";
-import { handlerAddFeed } from "./handler_add_feed";
+import { handlerLogin } from "./commands/handler_login";
+import { handlerRegister } from "./commands/handler_register";
+import { handlerReset } from "./commands/handler_reset";
+import { handlerUsers } from "./commands/handler_users";
+import { handlerAgg } from "./commands/handler_agg";
+import { handlerAddFeed } from "./commands/handler_add_feed";
 
 /**
  * Entry point to the application

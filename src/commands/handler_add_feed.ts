@@ -1,6 +1,6 @@
-import { readConfig } from "./config";
-import { createFeed, Feed } from "./lib/db/queries/feeds";
-import { getUser, User } from "./lib/db/queries/users";
+import { readConfig } from "../config";
+import { createFeed, Feed } from "../lib/db/queries/feeds";
+import { getUser, User } from "../lib/db/queries/users";
 
 
 export async function handlerAddFeed(cmdName: string, ...args: string[]): Promise<void> {

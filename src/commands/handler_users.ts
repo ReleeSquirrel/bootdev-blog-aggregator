@@ -1,5 +1,5 @@
-import { readConfig } from "./config";
-import { getUsers } from "./lib/db/queries/users";
+import { readConfig } from "../config";
+import { getUsers } from "../lib/db/queries/users";
 
 
 export async function handlerUsers(cmdName: string, ...args: string[]): Promise<void> {
