@@ -1,18 +1,17 @@
 import { CommandsRegistry, registerCommand, runCommand } from "./command_registry";
-import { handlerLogin } from "./handler_login";
 import { readConfig } from "./config";
 import { exit } from "node:process";
+import { handlerLogin } from "./handler_login";
 import { handlerRegister } from "./handler_register";
 import { handlerReset } from "./handler_reset";
+import { handlerUsers } from "./handler_users";
 
 /**
  * Entry point to the application
  */
 async function main(): Promise<void> {
   const commandsRegistry: CommandsRegistry = {} as CommandsRegistry;
-  registerCommand(commandsRegistry, "login", handlerLogin);
-  registerCommand(commandsRegistry, "register", handlerRegister);
-  registerCommand(commandsRegistry, "reset", handlerReset);
+  registerCommands(commandsRegistry);
   const commandInput = process.argv.slice(2);
   if (commandInput.length === 0) {
     console.log("Error: at least one command required");
@@ -33,6 +32,13 @@ async function main(): Promise<void> {
   const configData = readConfig();
   console.log(configData);
   process.exit(0);
+}
+
+function registerCommands(registry:CommandsRegistry): void {
+  registerCommand(registry, "login", handlerLogin);
+  registerCommand(registry, "register", handlerRegister);
+  registerCommand(registry, "reset", handlerReset);
+  registerCommand(registry, "users", handlerUsers);
 }
 
 main();
