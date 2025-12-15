@@ -1,6 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
 
-
 type RSSFeed = {
     channel: {
         title: string;
@@ -74,3 +73,4 @@ export async function fetchFeed(feedURL: string): Promise<RSSFeed> {
 
     return result;
 }
+

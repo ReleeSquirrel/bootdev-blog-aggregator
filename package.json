@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsx ./src/index.ts",
     "generate": "drizzle-kit generate",
-    "migrate": "drizzle-kit migrate"
+    "migrate": "drizzle-kit migrate",
+    "dbconnect": "psql 'postgres://postgres:postgres@localhost:5432/gator'"
   },
   "repository": {
     "type": "git",
