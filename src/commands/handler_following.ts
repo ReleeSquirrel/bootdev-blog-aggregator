@@ -1,19 +1,15 @@
-import { readConfig } from "src/config";
 import { getFeedFollowsForUser } from "src/lib/db/queries/feedfollows";
+import { User } from "src/lib/db/queries/users";
 
 
-export async function handlerFollowing(cmdName: string, ...args: string[]): Promise<void> {
-    const currentUserName = readConfig().currentUserName;
-    if (!currentUserName) {
-        throw new Error(`Error: No current user set in config file.`)
-    }
-    const feedFollows = await getFeedFollowsForUser(currentUserName);
+export async function handlerFollowing(cmdName: string, user: User): Promise<void> {
+    const feedFollows = await getFeedFollowsForUser(user.name);
     if (!feedFollows) {
-        console.log(`Error: User ${currentUserName} is not following any feeds.`);
+        console.log(`Error: User ${user.name} is not following any feeds.`);
         return;
     }
     
-    console.log(`User ${currentUserName} is currently following:`);
+    console.log(`User ${user.name} is currently following:`);
     for (const feedFollow of feedFollows) {
         console.log(`* ${feedFollow.feed_name}`);
     }

@@ -1,7 +1,7 @@
 import { getFeedsPlusUsername } from "src/lib/db/queries/feeds";
 
 
-export async function handlerFeeds(cmdName: string, ...args: string[]): Promise<void> {
+export async function handlerFeeds(cmdName: string): Promise<void> {
     const feeds = await getFeedsPlusUsername();
     if (feeds.length === 0) {
         throw new Error(`Error: No feeds registered in database.`);
