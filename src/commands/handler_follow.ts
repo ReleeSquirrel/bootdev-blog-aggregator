@@ -5,7 +5,7 @@ import { User } from "src/lib/db/queries/users";
 
 export async function handlerFollow(cmdName: string, user: User, ...args: string[]): Promise<void> {
     if (args.length === 0) {
-        throw new Error("Error: Follow expects a url.");
+        throw new Error("Error: follow expects a url.");
     }
     const feed = await getFeedByUrl(args[0]);
     if (!feed) {
