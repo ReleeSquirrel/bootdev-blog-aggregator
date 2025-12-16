@@ -9,7 +9,7 @@ const configFileName = ".gatorconfig.json"
  */
 export type Config = {
     dbUrl: string,
-    currentUserName?: string,
+    currentUserName: string,
 }
 
 /**
@@ -59,14 +59,14 @@ function writeConfig(cfg: Config): void {
  */
 function validateConfig(rawConfig: any): Config {
     if (!rawConfig || typeof rawConfig !== "object") {
-        throw new Error("Invalid Config Data");
+        throw new Error("Error: Invalid Config Data");
     }
     if (typeof rawConfig.db_url !== "string") {
-        throw new Error("Invalid Config Data - db_url property is not a string");
+        throw new Error("Error: Invalid Config Data - db_url property is not a string");
     }
     if ('current_user_name' in rawConfig) {
         if (typeof rawConfig.current_user_name !== "string") {
-            throw new Error("Invalid Config Data - current_user_name property is not a string");
+            throw new Error("Error: Invalid Config Data - current_user_name property is not a string");
         }
     } else {
         rawConfig.current_user_name = undefined;

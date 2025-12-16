@@ -15,6 +15,20 @@
       "when": 1765836191156,
       "tag": "0001_tidy_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765857261582,
+      "tag": "0002_green_phalanx",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765865902548,
+      "tag": "0003_abnormal_wolfsbane",
+      "breakpoints": true
     }
   ]
 }

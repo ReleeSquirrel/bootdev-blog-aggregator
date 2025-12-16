@@ -10,7 +10,13 @@ export async function createFeed(name: string, url: string, user_id: string): Pr
     return result;
 }
 
+export async function getFeedByUrl(url: string): Promise<Feed> {
+    const [result] = await db.select().from(feeds).where(eq(feeds.url, url));
+    return result;
+}
+
 export async function getFeedsPlusUsername(): Promise<{ feedname: string; url: string; username: string; }[]> {
-    const result = (await db.select({ feedname: feeds.name, url: feeds.url, username: users.name}).from(feeds).innerJoin(users, eq(feeds.user_id, users.id)));
+    const result = (await db.select({ feedname: feeds.name, url: feeds.url, username: users.name})
+        .from(feeds).innerJoin(users, eq(feeds.user_id, users.id)));
     return result;
 }
