@@ -1,13 +1,13 @@
-import { CommandsRegistry, registerCommand, runCommand } from "./commands/command_registry";
+import { CommandsRegistry, middlewareLoggedIn, registerCommand, runCommand } from "./commands/command_registry";
 import { handlerLogin } from "./commands/handler_login";
 import { handlerRegister } from "./commands/handler_register";
 import { handlerReset } from "./commands/handler_reset";
 import { handlerUsers } from "./commands/handler_users";
 import { handlerAgg } from "./commands/handler_agg";
-import { handlerAddFeed } from "./commands/handler_add_feed";
 import { handlerFeeds } from "./commands/handler_feeds";
 import { handlerFollow } from "./commands/handler_follow";
 import { handlerFollowing } from "./commands/handler_following";
+import { handlerAddFeed } from "./commands/handler_add_feed";
 
 /**
  * Entry point to the application
@@ -21,7 +21,7 @@ async function main(): Promise<void> {
   }
 
   const commandsRegistry: CommandsRegistry = {} as CommandsRegistry;
-  registerCommands(commandsRegistry);
+  await registerCommands(commandsRegistry);
   if (!(commandInput[0] in commandsRegistry)){
     console.log("Error: Unknown command.");
     process.exit(1);
@@ -41,16 +41,16 @@ async function main(): Promise<void> {
   process.exit(0);
 }
 
-function registerCommands(registry: CommandsRegistry): void {
+async function registerCommands(registry: CommandsRegistry): Promise<void> {
   registerCommand(registry, "login", handlerLogin);
   registerCommand(registry, "register", handlerRegister);
   registerCommand(registry, "reset", handlerReset);
   registerCommand(registry, "users", handlerUsers);
   registerCommand(registry, "agg", handlerAgg);
-  registerCommand(registry, "addfeed", handlerAddFeed);
+  registerCommand(registry, "addfeed", await middlewareLoggedIn(handlerAddFeed));
   registerCommand(registry, "feeds", handlerFeeds);
-  registerCommand(registry, "follow", handlerFollow);
-  registerCommand(registry, "following", handlerFollowing);
+  registerCommand(registry, "follow", await middlewareLoggedIn(handlerFollow));
+  registerCommand(registry, "following", await middlewareLoggedIn(handlerFollowing));
 }
 
 main();
