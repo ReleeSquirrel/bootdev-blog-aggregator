@@ -1,7 +1,8 @@
 import { db } from "..";
 import { feed_follows, feeds, users } from "../schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import { getUser } from "./users";
+import { getFeedByUrl } from "./feeds";
 
 export type FeedFollow = typeof feed_follows.$inferSelect;
 
@@ -46,4 +47,13 @@ export async function getFeedFollowsForUser(user_name: string): Promise<{ id: st
         .innerJoin(feeds, eq( feed_follows.feed_id, feeds.id))
         .where(eq(feed_follows.user_id, user.id));
     return result;
+}
+
+export async function deleteFeedFollowByUserIdAndFeedUrl(user_id: string, url: string): Promise<void> {
+    const feed = await getFeedByUrl(url);
+    if (!feed) {
+        throw new Error(`Error: No feed matching ${url} was found.`);
+    }
+    await db.delete(feed_follows)
+        .where(and(eq(feed_follows.user_id, user_id), eq(feed_follows.feed_id, feed.id)));
 }
