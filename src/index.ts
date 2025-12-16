@@ -7,6 +7,7 @@ import { handlerReset } from "./commands/handler_reset";
 import { handlerUsers } from "./commands/handler_users";
 import { handlerAgg } from "./commands/handler_agg";
 import { handlerAddFeed } from "./commands/handler_add_feed";
+import { handlerFeeds } from "./commands/handler_feeds";
 
 /**
  * Entry point to the application
@@ -45,6 +46,7 @@ function registerCommands(registry: CommandsRegistry): void {
   registerCommand(registry, "users", handlerUsers);
   registerCommand(registry, "agg", handlerAgg);
   registerCommand(registry, "addfeed", handlerAddFeed);
+  registerCommand(registry, "feeds", handlerFeeds);
 }
 
 main();
