@@ -1,7 +1,12 @@
 import { getPostsForUser } from "src/lib/db/queries/posts";
 import { User } from "src/lib/db/queries/users";
 
-
+/**
+ * Handles the browse command in the cli, which shows the contents of RSS feeds the current user is following
+ * @param cmdName 
+ * @param user 
+ * @param args 
+ */
 export async function handlerBrowse(cmdName: string, user: User, ...args: string[]): Promise<void> {
     let postLimit;
     if(args) {

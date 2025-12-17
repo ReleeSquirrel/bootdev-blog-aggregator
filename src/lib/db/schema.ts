@@ -1,5 +1,8 @@
 import { pgTable, timestamp, uuid, text, unique } from "drizzle-orm/pg-core";
 
+/**
+ * Defines the schema for the users table in the database
+ */
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom().notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -7,6 +10,9 @@ export const users = pgTable("users", {
   name: text("name").notNull(),
 });
 
+/**
+ * Defines the schema for the feeds table in the database
+ */
 export const feeds = pgTable("feeds", {
   id: uuid("id").primaryKey().defaultRandom().notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -17,6 +23,9 @@ export const feeds = pgTable("feeds", {
   last_fetched_at: timestamp("last_fetched_at"),
 });
 
+/**
+ * Defines the schema for the feed_follows table in the database
+ */
 export const feed_follows = pgTable("feed_follows", {
   id: uuid("id").primaryKey().defaultRandom().notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -27,6 +36,9 @@ export const feed_follows = pgTable("feed_follows", {
   unique().on(t.user_id, t.feed_id)
 ]);
 
+/**
+ * Defines the schema for the posts table in the database
+ */
 export const posts = pgTable("posts", {
   id: uuid("id").primaryKey().defaultRandom().notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),

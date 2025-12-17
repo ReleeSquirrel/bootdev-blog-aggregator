@@ -43,6 +43,10 @@ async function main(): Promise<void> {
   process.exit(0);
 }
 
+/**
+ * Registers all of the established commands to the given CommandsRegistry
+ * @param registry the CommandsRegistry to register commands to
+ */
 async function registerCommands(registry: CommandsRegistry): Promise<void> {
   registerCommand(registry, "login", handlerLogin);
   registerCommand(registry, "register", handlerRegister);

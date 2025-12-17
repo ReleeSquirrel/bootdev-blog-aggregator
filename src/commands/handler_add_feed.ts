@@ -2,7 +2,12 @@ import { createFeedFollow } from "src/lib/db/queries/feedfollows";
 import { createFeed } from "../lib/db/queries/feeds";
 import { User } from "../lib/db/queries/users";
 
-
+/**
+ * Handles the addfeed command in the cli, which adds a new RSS feed to the registered feeds
+ * @param cmdName 
+ * @param user 
+ * @param args 
+ */
 export async function handlerAddFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
     if (args.length < 2) {
         throw new Error("Error: addfeed expects a feed name and url.");

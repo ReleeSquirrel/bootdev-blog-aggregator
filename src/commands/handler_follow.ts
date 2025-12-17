@@ -2,7 +2,12 @@ import { createFeedFollow } from "src/lib/db/queries/feedfollows";
 import { getFeedByUrl } from "src/lib/db/queries/feeds";
 import { User } from "src/lib/db/queries/users";
 
-
+/**
+ * Handles the follow command in the cli, registering a user follows a feed at the given url
+ * @param cmdName 
+ * @param user 
+ * @param args 
+ */
 export async function handlerFollow(cmdName: string, user: User, ...args: string[]): Promise<void> {
     if (args.length === 0) {
         throw new Error("Error: follow expects a url.");

@@ -1,7 +1,11 @@
 import { setUser } from "../config";
 import { getUser } from "../lib/db/queries/users";
 
-
+/**
+ * Handles the login command in the cli, which switches the current user
+ * @param cmdName 
+ * @param args 
+ */
 export async function handlerLogin(cmdName: string, ...args: string[]): Promise<void> {
     if (args.length === 0) {
         throw new Error("Error: login expects a user name.");

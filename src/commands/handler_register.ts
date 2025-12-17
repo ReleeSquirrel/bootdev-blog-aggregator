@@ -1,6 +1,11 @@
 import { setUser } from "../config";
 import { createUser, getUser } from "../lib/db/queries/users";
 
+/**
+ * Handles the register command in the cli, which registers a new user to the application
+ * @param cmdName 
+ * @param args 
+ */
 export async function handlerRegister(cmdName: string, ...args: string[]): Promise<void> {
     if (args.length === 0) {
         throw new Error("Error: register expects a user name.");

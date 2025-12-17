@@ -3,7 +3,12 @@ import { fetchFeed } from "../lib/rss/fetch_feed";
 import { createPost } from "src/lib/db/queries/posts";
 import { DateTime } from "luxon";
 
-
+/**
+ * Handles the agg command in the cli, which sets the application into an unresponsive mode
+ * gathering RSS data from the followed RSS feeds
+ * @param cmdName 
+ * @param args 
+ */
 export async function handlerAgg(cmdName: string, ...args: string[]): Promise<void> {
     if (args.length === 0) {
         throw new Error("Error: agg expects a duration to wait between requests.");
@@ -27,10 +32,19 @@ export async function handlerAgg(cmdName: string, ...args: string[]): Promise<vo
 
 }
 
+/**
+ * Error handler callback for the scrapeFeeds interval loop
+ * @param reason 
+ */
 function handleError(reason: any) {
     console.log(`Error: ${reason}`);
 }
 
+/**
+ * Helper function to parse the user's duration input data
+ * @param durationStr 
+ * @returns 
+ */
 function parseDuration(durationStr: string) {
     const regex = /^(\d+)(ms|s|m|h)$/;
     const match = durationStr.match(regex);
@@ -62,6 +76,9 @@ function parseDuration(durationStr: string) {
     return miliseconds;
 }
 
+/**
+ * Scrape the data from the RSS feed in the database with the oldest last_fetched_from date
+ */
 export async function scrapeFeeds(): Promise<void> {
     const nextFeed = await getNextFeedToFetch();
     if (!nextFeed) {

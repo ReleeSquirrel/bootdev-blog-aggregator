@@ -1,5 +1,8 @@
 import { XMLParser } from "fast-xml-parser";
 
+/**
+ * A type representing a simplified RSS Feed
+ */
 type RSSFeed = {
     channel: {
         title: string;
@@ -9,6 +12,9 @@ type RSSFeed = {
     };
 };
 
+/**
+ * A type representing a simplified item property of an RSS feed
+ */
 type RSSItem = {
     title: string;
     link: string;
@@ -16,6 +22,11 @@ type RSSItem = {
     pubDate: string;
 };
 
+/**
+ * Fetches the data from an RSS feed
+ * @param feedURL The URL of the RSS feed to fetch
+ * @returns An RSSFeed object containing the data from the RSS feed
+ */
 export async function fetchFeed(feedURL: string): Promise<RSSFeed> {
     const response = await fetch(feedURL, {
         method: "GET",
