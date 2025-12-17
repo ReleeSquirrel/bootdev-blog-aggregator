@@ -1,5 +1,7 @@
 import { getNextFeedToFetch, markFeedFetched } from "src/lib/db/queries/feeds";
 import { fetchFeed } from "../lib/rss/fetch_feed";
+import { createPost } from "src/lib/db/queries/posts";
+import { DateTime } from "luxon";
 
 
 export async function handlerAgg(cmdName: string, ...args: string[]): Promise<void> {
@@ -71,6 +73,8 @@ export async function scrapeFeeds(): Promise<void> {
         throw new Error(`Error: No RSS Feed Recieved from ${nextFeed.url}.`);
     }
     for (const RSSItem of RSSFeed.channel.item) {
-        console.log(RSSItem.title);
+        // Parse the pubDate from the RSS feed which is in RFC 822 format into a JavaScript Date object for Database Insertion
+        const parsedPubDate = DateTime.fromRFC2822(RSSItem.pubDate, { setZone : true });
+        createPost(RSSItem.title, RSSItem.link, RSSItem.description, !parsedPubDate.isValid ? new Date() : parsedPubDate.toJSDate(), nextFeed.id);
     }
 }

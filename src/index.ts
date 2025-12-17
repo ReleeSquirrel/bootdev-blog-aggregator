@@ -9,6 +9,7 @@ import { handlerFollow } from "./commands/handler_follow";
 import { handlerFollowing } from "./commands/handler_following";
 import { handlerAddFeed } from "./commands/handler_add_feed";
 import { handlerUnfollow } from "./commands/handler_unfollow";
+import { handlerBrowse } from "./commands/handler_browse";
 
 /**
  * Entry point to the application
@@ -53,6 +54,7 @@ async function registerCommands(registry: CommandsRegistry): Promise<void> {
   registerCommand(registry, "follow", await middlewareLoggedIn(handlerFollow));
   registerCommand(registry, "following", await middlewareLoggedIn(handlerFollowing));
   registerCommand(registry, "unfollow", await middlewareLoggedIn(handlerUnfollow));
+  registerCommand(registry, "browse", await middlewareLoggedIn(handlerBrowse));
 }
 
 main();

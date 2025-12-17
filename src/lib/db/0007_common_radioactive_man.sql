@@ -1,0 +1,2 @@
+ALTER TABLE "posts" ALTER COLUMN "feed_id" SET DATA TYPE uuid USING feed_id::uuid;--> statement-breakpoint
+ALTER TABLE "posts" ADD CONSTRAINT "posts_feed_id_feeds_id_fk" FOREIGN KEY ("feed_id") REFERENCES "public"."feeds"("id") ON DELETE cascade ON UPDATE no action;

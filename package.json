@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ReleeSquirrel/bootdev-blog-aggregator#readme",
   "devDependencies": {
+    "@types/luxon": "^3.7.1",
     "@types/node": "^25.0.2",
     "drizzle-kit": "^0.31.8",
     "tsx": "^4.21.0",
@@ -30,6 +31,7 @@
   "dependencies": {
     "drizzle-orm": "^0.45.1",
     "fast-xml-parser": "^5.3.3",
+    "luxon": "^3.7.2",
     "postgres": "^3.4.7"
   }
 }
