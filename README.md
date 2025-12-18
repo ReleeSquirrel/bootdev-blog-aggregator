@@ -26,7 +26,7 @@ One of the last steps of the Boot.dev course "Build a Blog Aggregator in Typescr
 - Determine your connection string. It is most likely "postgres://postgres:postgres@localhost:5432/gator?sslmode=disable" but it takes the format "protocol://username:password@host:port/database?sslmode=disable" so if you used a different password when I said to remember it, replace the password section following the username and colon. 
 - In your home directory ~ create a new file named `.gatorconfig.json` with the following contents, replacing `<connection_string>` with the text of your connection string:
 ```
-{`
+{
   "db_url": "<connection_string>"
 }
 ```
