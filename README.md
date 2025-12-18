@@ -4,7 +4,7 @@ An RSS Blog Aggregator made for a Boot.dev project. AKA gator.
 
 # Foreward
 
-One of the last steps of the Boot.dev course asks students to do three things. One is to create this document, the other two are things to put in it. Specifically they are "Explain to the user what they'll need to run the CLI." and "Explain to the user how to set up the config file and run the program. Tell them about a few of the commands they can run." I'm leaving this project in a dev state rather than polishing it up, because it's such a weird program. Some of the design choices are based on "Do this so you can learn how to do it!" even though it doesn't fit the tool the project has you create's goal. I'm explaining this so you understand why the steps to set it up are so weird and complex.
+One of the last steps of the Boot.dev course "Build a Blog Aggregator in Typescript" asks students to do three things. One is to create this document, the other two are things to put in it. Specifically they are "Explain to the user what they'll need to run the CLI." and "Explain to the user how to set up the config file and run the program. Tell them about a few of the commands they can run." I'm leaving this project in a dev state rather than polishing it up, because it's such a weird program. Some of the design choices are based on "Do this so you can learn how to do it!" even though it doesn't fit the tool the project has you create's goal. I'm explaining this so you understand why the steps to set it up are so weird and complex.
 
 # How to Set gator Up
 
